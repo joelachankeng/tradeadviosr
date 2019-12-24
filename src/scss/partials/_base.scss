@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600');
+@import url('https://fonts.googleapis.com/css?family=Lora:400,700&display=swap');
+
+$font-main: 'Poppins', sans-serif;
+$font-header: 'Lora', sans-serif;
+
+$primary: #1fa7da;
+$secondary: #fd7062;
+$white: #fff;
+$black: #000;
+$text-dark: #252525;
+$text-light: #777777;
+$header: #333;
+$bg-light-grey: #f3f3f3;
+
+.color-primary {
+    color: $primary !important;
+    &.hover-secondary {
+        &:hover {
+            color: $secondary !important;
+        }
+    }
+}
+.color-secondary {
+    color: $secondary !important;
+    &.hover-primary {
+        &:hover {
+            color: $primary !important;
+        }
+    }
+}
+
+.font-main {
+    font-family: $font-main !important;
+}
+.font-header {
+    font-family: $font-header !important;
+}
+.button {
+    text-transform: uppercase;
+    color: $white;
+    font-size: 14px;
+    font-family: $font-main;
+    font-weight: 600;
+    background-color: $primary;
+    padding: 15px 30px;
+    line-height: 14px;
+    &:hover {
+        background-color: $secondary;
+        color: $white !important;
+    }
+}

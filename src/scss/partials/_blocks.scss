@@ -1,0 +1,327 @@
+.custom-block {
+    &.full-width-with-text {
+        background-color: transparent;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-size: cover;
+
+        .wrapper {
+            .content {
+                padding: 0px 15px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 150px 0px;
+                .title{
+                    font-size: 60px;
+                    font-weight: 400;
+                    letter-spacing: 0em;
+                    line-height: 1.16;
+                    color: $header;
+                    text-transform: capitalize;
+                    margin: 0px;
+                }
+                .title-break {
+                    margin-top: 26px;
+                    margin-bottom: 56px;
+                    margin-left: 0;
+                    width: 50px;
+                    height: 5px;
+                    background-color: transparent;
+                    background-image: none;
+                    border-top-width: 5px;
+                    border-top-color: $primary;
+                    border-top-style: solid;
+                }
+                .text-container {
+
+                }
+                &.left {
+                    margin-right: 50%;
+                }
+                &.right {
+                    margin-left: 50%;
+                }
+                &.center {
+                    align-items: center;
+                    text-align: center;
+                    .title-break {
+                        margin-left: auto !important;
+                    }
+                }
+            }
+        }
+        .latest-testimonty {
+            background: rgba(255, 255, 255, 0.5);
+            height: inherit;
+            width: inherit;
+            img {
+                border-radius: 100px;
+            }
+            .testimony {
+                margin: 15px 0px;
+                font-style: normal;
+                font-weight: 300;
+                font-size: 18px;
+                line-height: 1.73;
+                letter-spacing: 0em;
+                color: $text-dark;
+                .text{
+                    margin-bottom: 20px;
+                }
+                p {
+                    background: rgba(31, 167, 218, .9);
+                    padding: 10px 30px;
+                    margin: 0px;
+                }
+                span {
+                    background: rgba(253, 112, 98, 0.9);
+                    padding: 10px 30px;
+                    color: $text-dark;
+                }
+                
+            }
+            .button {
+                margin-top: 50px;
+            }
+            
+        }
+    }
+    &.services {
+        padding: 80px 0px;
+        background: $bg-light-grey;
+        display: flex;
+        flex-direction: column;       
+        
+        h2.title {
+            font-size: 60px;
+            text-transform: capitalize;
+            margin: 0px;
+            text-align: center
+        }
+        .title-break {
+            margin-left: auto !important;
+        }
+        .services-row {
+            display: flex;
+            justify-content: space-between;
+            width: inherit;
+            flex-direction: row-reverse;
+            .service {
+                height: 650px;
+                margin: 0 15px;
+                display: flex;
+                flex: 1;
+                background-color: transparent;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 100%;
+                background-size: cover;
+                cursor: pointer;
+                .overlay {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    align-items: center;
+                    text-align: center;
+                    flex: 1;
+                    
+                    .title{
+                        font-size: 22px;
+                        font-weight: 400 !important;
+                        -webkit-transition: 1s;
+                        -o-transition: 1s;
+                        transition: 1s;
+                        color: $text-dark;
+                        padding: 10px 20px;
+                        text-transform: capitalize;
+                        background-color: rgba(255,255,255,0.6);
+                        width: 90%;
+                        margin: 0px;
+                    }
+                    .button{
+                        display: none;
+                        -webkit-transition: 1s;
+                        -o-transition: 1s;
+                        transition: 1s;
+                    }
+                }
+                &:hover {
+                    .title{
+                        height: 90%;
+                        color: $primary;
+                        padding: 50% 0px;
+                        background-color: rgba(255,255,255,0.9);
+                        font-size: 32px;
+                        margin-bottom: 50px;
+                    }
+                    .button {
+                        display: block;
+                        position: relative;
+                        top: -130px;
+                    }
+                }
+            }
+        }
+    }
+    &.recent-blog {
+        padding: 80px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h2.title {
+            font-size: 60px;
+            text-transform: capitalize;
+            margin: 0px;
+            text-align: center
+        }
+        .title-break {
+            margin-left: auto !important;
+        }
+        .blog-row {
+            display: flex;
+            justify-content: space-between;
+            width: inherit;
+            .blog-post {
+                padding: 0px 15px;
+                margin-bottom: 50px;
+                .image {
+                    width: inherit;
+                    height: 320px;
+                    padding-bottom: 20px;
+                }
+                .title a {
+                    text-transform: none;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 24px;
+                    line-height: 1.37;
+                    font-family: $font-main;
+                    letter-spacing: 0em;
+                    color: $header;
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+                .description {
+                    font-style: normal;
+                    font-weight: 300;
+                    font-size: 16px;
+                    font-family: $font-main;
+                    letter-spacing: 0em;
+                    color: $text-dark;
+                    padding-bottom: 20px;
+                    .link-more {
+                        display: none;
+                    }
+                }
+                .author {
+                    display: flex;
+                    margin: 50px 0px;
+                    img {
+                        height: 80px;
+                        width: 80px;
+                        border-radius: 50%;
+                        margin-right: 30px;
+                    }
+                    div {
+                        display: flex;
+                        flex-direction: column;
+                        p {
+                            margin: 0px;
+                            color: $primary;
+                            font-style: normal;
+                            font-weight: 300;
+                            font-size: 14px;
+                            line-height: 1.7;
+                            letter-spacing: 0em;
+                            a {
+                                color: $secondary;
+                                font-weight: 700;
+                                justify-content: center;
+                                &:hover {
+                                    color: $primary;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.hero {
+        padding: 200px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            h1.title {
+                color: $white;
+                font-size: 4em;
+                text-align: center;
+                text-transform: capitalize;
+                margin: 0px;
+            }
+            hr {
+                margin: 20px auto;
+            }
+            p.subtitle {
+                color: $white;
+                text-align: center;
+                margin: 0px;
+            }
+        }
+    }
+    &.promotion {
+        margin: 50px 0px;
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            justify-content: space-between;
+            .product {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .image {
+                    width: auto;
+                    height: 250px;
+                    margin-bottom: 22px;
+                }
+            }
+            .bullet {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                span.number {
+                    background: $primary;
+                    color: $white;
+                    font-size: 2em;
+                    font-weight: 700;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 50%;
+                    width: 150px;
+                    height: 150px;
+                    margin-bottom: 20px;
+                }
+                .desc {
+                    font-weight: 500;
+                    p {
+                        margin-bottom: 15px;
+                        color: $header;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,545 @@
+.page-schedule{
+    .wrapper {
+
+        margin-top: 200px;
+        margin-bottom: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       
+
+        section{
+             -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+            box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+            padding: 15px 30px;
+            border: 1px solid #dfdfdf;
+            background: $white;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0px;
+        }
+        .logo {
+            border: 1px solid #dfdfdf;
+            padding: 15px 30px;
+            margin-top: -150px;
+            background: $white;
+            -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+            box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+            margin-bottom: 100px;
+            img {
+                width: auto;
+                height: 200px;
+            }
+        }
+        .form-schedule {
+            width: 100%;
+            margin: 15px 0px;
+
+            .circle {
+                background: $primary;
+                color: $white;
+                margin-right: 15px;
+                border-radius: 50%;
+                padding: 5px 15px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            }
+            h3.title {
+                display: flex;
+                text-transform: capitalize;
+                align-items: center;
+                color: $text-dark;
+                font-size: 24px;
+                margin-bottom: 15px;
+                .circle {
+                    margin-right: 15px;
+                }
+            }
+            .appointment-types {
+                display: flex;
+                flex-direction: column;
+                .types{
+                    display: flex;
+                    border: 1px solid #dfdfdf;
+                    margin: 10px 0px;
+                    padding: 10px 15px;
+                    cursor: pointer;
+                    justify-content: space-between;
+                    align-items: center;
+                    .description {
+                        display: flex;
+                        flex-direction: column;
+                        max-width: 90%;
+                        p {
+                            margin: 0px;
+                            &.title {
+                                font-weight: 700;
+                                color: $text-dark;
+                            }
+                            &.text {
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                    &:hover, &.active {
+                        background: $primary;
+                        color: $white;
+                        .title {
+                            color: $white !important;
+                        }
+                        .circle {
+                            color: $primary;
+                            background: $white;
+                        }
+                        .button {
+                            border: 1px solid $white;
+                        }
+                       
+                    }
+                }
+            }
+            .time-schedule {
+                display: flex;
+                flex-direction: column;
+                padding: 15px 0px;
+                overflow-x: auto;
+                table {
+                    text-align: center;
+                    
+                }
+                label {
+                    font-size: 16px;
+                    color: $text-light;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                }
+                .days {
+                    background: $bg-light-grey;
+                    font-weight: 700;
+                    color: $text-dark;
+                }
+            }
+            .gform-schedule {
+                margin-top: 30px;
+                .gform_title {
+                    display: none;
+                }
+                label.gfield_label {
+                    font-weight: normal !important;
+                    color: $text-dark !important;
+                }
+                input[type=text] {
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+}
+.blog-posts {
+    .wrapper {
+        .sidebar {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            min-width: 25%;
+            margin: 0px 20px;
+            &>div {
+                margin-bottom: 50px;
+            }
+            h3 {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 1.37;
+                letter-spacing: 0em;
+                font-family: $font-main;
+                text-align: inherit;
+                color: $header;
+                text-transform: capitalize;
+            }
+            ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                font-size: 16px;
+            }
+            .recent-posts li {
+                a {
+                    font-weight: 700;
+                    color: $header;
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+            .tags ul{
+                flex-direction: row;
+                flex-wrap: wrap;
+                li {
+                    border: 1px solid $primary;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 5px;
+                    border-radius: 5px;
+                    margin: 5px;
+                   &:hover {
+                       background: $primary;
+                       a {
+                           color: $white;
+                       }
+                   }
+                }
+            } 
+        }
+        .all-posts {
+            .blog-posts {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                .blog-post {
+                    max-width: 48%;
+                    margin-bottom: 50px;
+                    .title a {
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 24px;
+                        line-height: 1.37;
+                        font-family: $font-main;
+                        letter-spacing: 0em;
+                        text-align: inherit;
+                        color: $header;
+                        text-transform: capitalize;
+                    }
+                    .image {
+                        height: 200px;
+                        width: 100%;
+                    }
+                    .author {
+                        display: flex;
+                        margin: 50px 0px;
+                        align-items: center;
+                        img {
+                            height: 80px;
+                            width: 80px;
+                            border-radius: 50%;
+                            margin-right: 30px;
+                        }
+                        div {
+                            display: flex;
+                            flex-direction: column;
+                            p {
+                                margin: 0px;
+                                color: $primary;
+                                font-style: normal;
+                                font-weight: 300;
+                                font-size: 14px;
+                                line-height: 1.7;
+                                letter-spacing: 0em;
+                                a {
+                                    color: $secondary;
+                                    font-weight: 700;
+                                    justify-content: center;
+                                    &:hover {
+                                        color: $primary;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.type-post {
+    .post-header {
+        .overlay{
+            background: rgba(0, 0, 0, 0.5);
+            .wrapper{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 100px 0px;
+                .post-tags ul {
+                    list-style: none;
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin: 0px;
+                    li {
+                        background: $secondary;
+                        padding: 5px 10px;
+                        margin: 0px 5px;
+                        a {
+                            font-weight: 700;
+                            color: $white;
+                            font-size: 14px;
+                            line-height: 1.5;
+                            text-transform: capitalize;
+                            text-decoration: none;
+                        }
+                        &:hover {
+                            background: $white;
+                            a {
+                                color: $header;
+                            }
+                        }
+                    }
+                }
+                .post-title {
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 60px;
+                    line-height: 1.16;
+                    font-family: $font-header;
+                    letter-spacing: 0em;
+                    text-align: inherit;
+                    color: $white;
+                    text-transform: capitalize;
+                    margin: 0px;
+                    margin: 35px 0px;
+                    padding: 0px;
+                }
+                .post-author {
+                    display: flex;
+                    margin: 0px;
+                    align-items: center;
+                    img {
+                        height: 80px;
+                        width: 80px;
+                        border-radius: 50%;
+                        margin-right: 30px;
+                    }
+                    div {
+                        display: flex;
+                        flex-direction: column;
+                        p {
+                            margin: 0px;
+                            color: $secondary;
+                            font-style: normal;
+                            font-weight: 300;
+                            font-size: 14px;
+                            line-height: 1.7;
+                            letter-spacing: 0em;
+                            a {
+                                color: $white;
+                                font-weight: 700;
+                                justify-content: center;
+                                &:hover {
+                                    color: $primary;
+                                }
+                            }
+                        }
+                    }
+                }
+                .post-social {
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+    .post-content {
+        display: flex;
+        margin: 50px auto;
+        .recent-posts {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 25%;
+            padding-left: 30px;
+            h3 {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 1.37;
+                letter-spacing: 0em;
+                font-family: $font-main;
+                text-align: inherit;
+                color: $header;
+                text-transform: capitalize;
+            }
+            .recent-post {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                li {
+                    margin-bottom: 20px;
+                    .post-img {
+                        height: 250px;
+                        width: 100%;
+                        padding-bottom: 10px;
+                    }
+                    .title {
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 1.37;
+                        font-family: $font-main;
+                        letter-spacing: 0em;
+                        text-align: inherit;
+                        color: $header;
+                        text-transform: capitalize;
+                    }
+                }
+            }
+        }
+    }
+}
+.testimonials {
+    display: flex;
+    flex-direction: column;
+    .testimony {
+        .wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 0px;
+        }
+        &.center {
+            background: $bg-light-grey;
+            .wrapper{
+                flex-direction: column;
+                img {
+                    order: 0;
+                    flex: auto;
+                    min-width: unset;
+                    height: 300px;
+                    width: auto;
+                }
+                .content-container {
+                    order: 1;
+                    padding: 0px;
+                    text-align: center;
+                    padding-top: 30px;
+                }
+            }
+        }
+        &.right {
+            .wrapper{
+                flex-wrap: wrap-reverse;
+            }
+            img {
+                order: 0;
+                flex: none;
+                min-width: unset;
+                height: 300px;
+                width: auto;
+            }
+            .content-container {
+                order: 1;
+                flex: 1;
+              padding: 0px;
+              padding-left: 25px;
+              text-align: right;
+            }
+        }
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            padding-right: 25px;
+            .headline {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;;
+                line-height: 1.37;
+                font-family: $font-main;
+                letter-spacing: 0em;
+                text-align: inherit;
+                color: $header;
+                text-transform: capitalize;
+            }
+            
+            .author{
+                color: $header;
+            }
+        }
+        img {
+            flex: 1;
+            min-width: 25%;
+            width: 100%;
+            height: auto;
+            border-radius: 100%;
+        }
+    }
+}
+.all-products {
+    margin: 50px 0px;
+    .product {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        .the-product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 50px;
+            flex: 30%;
+            .product-image {
+                height: 300px;
+                width: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                margin-bottom: 15px; 
+            }
+            .product-title {
+                font-style: normal;
+                font-weight: 400;
+                
+                line-height: 1.37;
+                font-family: $font-main;
+                letter-spacing: 0em;
+                text-align: inherit;
+                color: $header;
+                text-transform: capitalize;
+            }
+        }
+    }
+}
+.faqs {
+    display: flex;
+    flex-direction: column;
+    &>h1 {
+        font-style: normal;
+        font-weight: 400;
+        
+        line-height: 1.37;
+        font-family: $font-main;
+        letter-spacing: 0em;
+        text-align: inherit;
+        color: $header;
+        text-transform: capitalize;
+    }
+    .faq {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid $bg-light-grey;
+        margin-bottom: 20px;
+        cursor: pointer;
+        .title {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 1.37;
+            font-family: $font-main;
+            letter-spacing: 0em;
+            text-align: inherit;
+            color: $header;
+            display: flex;
+            align-items: center;
+            text-transform: capitalize;
+            .fas {
+                padding-right: 10px; 
+                color: $primary;
+            }
+        }
+        .answer{
+            display: none;
+        }
+    }
+}
