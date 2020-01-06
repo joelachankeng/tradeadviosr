@@ -1,17 +1,26 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600');
-@import url('https://fonts.googleapis.com/css?family=Lora:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-$font-main: 'Poppins', sans-serif;
-$font-header: 'Lora', sans-serif;
+$font-main:  'Roboto', sans-serif;
+$font-header: $font-main;
 
-$primary: #1fa7da;
-$secondary: #fd7062;
+$primary: #F53149;
+$secondary: #0E1833;
+$tertiary: #212C42;
 $white: #fff;
 $black: #000;
-$text-dark: #252525;
-$text-light: #777777;
-$header: #333;
-$bg-light-grey: #f3f3f3;
+$body-bg: #141a40;
+$green: #02ff02;
+
+@mixin icons {
+    font-family: "Font Awesome 5 Pro";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-weight: 900;
+}
 
 .color-primary {
     color: $primary !important;
@@ -30,23 +39,104 @@ $bg-light-grey: #f3f3f3;
     }
 }
 
+.accent {
+    color: $primary !important;
+}
+
 .font-main {
     font-family: $font-main !important;
 }
 .font-header {
     font-family: $font-header !important;
 }
+
 .button {
-    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: $white;
-    font-size: 14px;
-    font-family: $font-main;
-    font-weight: 600;
-    background-color: $primary;
-    padding: 15px 30px;
-    line-height: 14px;
+    background-color: $secondary;
+    border-radius: 5px;
+    padding: 30px;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 24px;
+    margin-bottom: 15px;
+    // text-shadow: 2px 2px 15px $white;
+
     &:hover {
-        background-color: $secondary;
-        color: $white !important;
+        background-color: $primary;
     }
+
+    &.action {
+        &:after {
+            @include icons;
+            content: '\f054';
+            padding-left: 20px;
+        }
+    }
+    &.warning {
+        &:before {
+            @include icons;
+            content: '\f06a';
+            padding-right: 20px;
+            color: yellow;
+            font-size: 48px;
+        }
+    }
+    &.watching {
+        &:before {
+            @include icons;
+            content: '\f06e';
+            padding-right: 20px;
+            // color: blue;
+            font-size: 48px;
+        }
+    }
+    &.no-hover {
+        &:hover{
+            background-color: $secondary;
+            cursor: default;
+        }
+    }
+}
+.switch {
+        position: relative;
+        -webkit-appearance: none;
+        outline: none;
+        width: 50px;
+        height: 30px;
+        background-color: #fff;
+        border: 1px solid #D9DADC;
+        border-radius: 50px;
+        box-shadow: inset -20px 0 0 0 #fff;
+        cursor: pointer;
+        box-shadow: inset -20px 0px 0px 0px $green;
+        border-color: $green;
+        transition-timing-function: ease-in;
+        transition: 0.25s;
+        margin: 0px 10px;
+      
+      &:after {
+        content: "";
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        background: transparent;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
+        cursor: pointer;
+      }
+      
+      &:checked {
+        box-shadow: inset 20px 0 0 0 $primary;
+        border-color: $primary;
+      }
+      
+      &:checked:after {
+        left: 20px;
+        box-shadow: -2px 4px 3px rgba(0,0,0,0.05);
+      }
 }

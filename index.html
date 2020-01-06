@@ -3,32 +3,52 @@
 <head>
     <title>Trade Advisor</title>
     <link rel="stylesheet" type="text/css" href="./dist/styles.min.css">
-    <script type="text/javascript" src="./dist/app.min.js"></script> 
+    <script type="text/javascript" src="./dist/app.min.js"></script>
+    <script src="https://kit.fontawesome.com/5773ee19cd.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Trade Advisor</h1>
+    <div class="trade-advisor container">
+        <h1 class="title">
+            <i class="fas fa-robot"></i>
+            Trade Advisor
+            <i class="fas fa-robot"></i>
+        </h1>
         <div class="status">
-            <img src="" alt="" class="trend-icon">
+            <label for="" class="trend up"><i class="fas fa-sort-amount-up"></i>Uptrend</label>
             <label for="" class="open-positions">Open Buy</label>
-            <label for="" class="negative-positons">Negative Hedge</label>
+            <label for="" class="negative-positons">1 Negative Hedge</label>
         </div>
         <div class="dashboard">
-            <div class="option">
-                <h3>200 EMA</h3>
-                <h3>50 EMA</h3>
+            <div class="options">
+                <div class="button no-hover">
+                    <h3>50 EMA</h3>
+                    <label>Above</label>
+                    <input class="50ema switch" type="checkbox">
+                    <label>Below</label>
+                </div>
+                <div class="button no-hover">
+                    <h3>200 EMA</h3>
+                    <label>Above</label>
+                    <input class="200ema switch" type="checkbox">
+                    <label>Below</label>
+                </div>
             </div>
             <div class="actions">
-                <span class="action-btn">Sell @ Light Green MACD</span>
+                <span class="action button">Sell @ Light Green MACD</span>
             </div>
             <div class="watchlist">
-                <span class="watching">Waiting for Light Green MACD</span>
-                <span class="warning">Watch out for last Highest High!</span>
+                <span class="watching button no-hover">Waiting for Light Green MACD</span>
+                <span class="warning button no-hover">Watch out for last Highest High!</span>
             </div>
         </div>
         <div class="stats">
-            <div class="positions-open"></div>
-            <div class="positions-num"></div>
+            <div class="positions-open">
+                <p>Positions Opened</p>
+            </div>
+            <div class="positions-num">
+                <span class="sells-opened">Sells</span>
+                <span class="buys-opened">Buys</span>
+            </div>
             <div class="positions-percentage"></div>
         </div>
         <div class="logs">
