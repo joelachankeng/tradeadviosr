@@ -5,14 +5,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 
     .title {
-        margin-bottom: 30px;
+        margin-bottom: 5px;
     }
     .status {
+        width: 100%;
         margin: 20px 0px;
         display: flex;
         font-size: 32px;
+        justify-content: center;
 
         label {
             padding: 0px 10px;
@@ -33,6 +36,8 @@
     }
     .dashboard {
         display: flex;
+        width: 100%;
+
         &>div {
             margin-left: 50px;
             width: 300px;
@@ -47,7 +52,9 @@
                 }
             }
             &.actions {
+                flex: 1;
                 flex-wrap: wrap;
+                align-items: flex-start;
             }
             &.watchlist {
                 flex-direction: column;
@@ -62,23 +69,81 @@
     }
     .stats {
         display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 60px;
 
+        .positions-open {
+            display: flex;
+            flex-direction: column;
+            background-color: $secondary;
+            color: $white;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            border: 20px solid #070C2A;
+            height: 200px;
+            width: 200px;
+            
+            p {
+                // color: $primary;
+                margin: 0px
+
+            }
+            span {
+                font-size: 32px;
+                font-weight: 700;
+            }
+        }
+        .positions-num {
+            display: flex;
+            flex-direction: column;
+
+            span {
+                &.sells-opened {
+                    border: 3px solid $green;
+                }
+                &.buys-opened {
+                    border: 3px solid $primary;
+                }
+            }
+        }
+        .positions-percentage {
+
+        }
     }
     .logs {
         display: flex;
         flex-direction: column;
+        width: 100%;
+        margin: 20px 0px;
+        background-color: $tertiary;
+        border-radius: 20px;
+        padding-top: 10px;
+
         .log {
+            
             height: 100px;
             width: 100%;
             background-color: $secondary;
             border: 0px;
             overflow-y: scroll;
+            color: $white;
+            outline: none;
+            font-size: 18px;
+            padding: 10px 20px;
         }
         .logs-btn {
             display: flex;
             justify-content: space-between;
+            padding: 10px 0px;
             span {
+                cursor: pointer;
                 flex: 1;
+                &:first-child {
+                    border-right: 1px solid $white;
+                }
             }
         }
     }
