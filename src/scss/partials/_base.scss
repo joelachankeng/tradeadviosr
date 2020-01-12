@@ -69,6 +69,7 @@ $green: #02ff02;
     }
 
     &.action {
+        width: 100%;
         &:after {
             @include icons;
             content: '\f054';

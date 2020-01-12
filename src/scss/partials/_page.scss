@@ -23,14 +23,27 @@
 
                 &.up {
                     color: $green;
+                    &:before {
+                        content: "\f161";
+                    }
                 }
                 &.down {
                     color: $primary;
+                    &:before {
+                        content: "\f160";
+                    }
                 }
-                i {
+                &:before {
+                    @include icons();
                     padding-right: 10px;
                 }
                 
+            }
+            &.open-positions {
+                display: none;
+            }
+            &.negative-positons {
+                display: none;
             }
         }
     }
