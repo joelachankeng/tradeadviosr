@@ -6,7 +6,7 @@
     <script src="https://kit.fontawesome.com/5773ee19cd.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="trade-advisor container">
+    <div class="trade-advisor">
         <h1 class="title">
             <i class="fas fa-robot"></i>
             Trade Advisor
@@ -42,6 +42,21 @@
                 <div class="watcher">
                     <span class="watching button no-hover">Waiting for Light Green MACD</span>
                 </div>
+            </div>
+            <div class="positions">
+                <div class="position" id="1">
+                    <span class="id">1</span>
+                    <select class="type">
+                        <option selected>Buy</option>
+                        <option>Sell</option>
+                    </select>
+                    <input type="number" class="pips" maxlength='2' value="0">
+                    <select class="condition">
+                        <option selected>Open</option>
+                        <option>Closed</option>
+                    </select>
+                </div>
+                
             </div>
         </div>
         <div class="stats">

@@ -5,7 +5,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
 
     .title {
         margin-bottom: 5px;
@@ -50,31 +51,77 @@
     .dashboard {
         display: flex;
         width: 100%;
+        justify-content: center;
 
         &>div {
-            margin-left: 50px;
-            width: 300px;
+            margin-left: 10px;
+            // width: 300px;
             display: flex;
+
+            &:first-child {
+                margin-left: 0px;
+            }
+
             &.options {
                 flex-direction: column;
                 .button {
                     font-size: 16px;
-                    label {
+                    label,h3 {
                         margin: 0px;
+                    }
+                    h3 {
+                        padding-right: 10px;
                     }
                 }
             }
             &.actions {
-                flex: 1;
-                flex-wrap: wrap;
-                align-items: flex-start;
+                // flex: 1;
+                // flex-wrap: wrap;
+                // align-items: flex-start;
+                flex-direction: column;
             }
             &.watchlist {
                 flex-direction: column;
                 .button {
                     font-size: 20px;
+                    justify-content: flex-start;
                     label {
                         margin: 0px;
+                    }
+                }
+            }
+            &.positions {
+                display: flex;
+                flex-direction: column;
+                margin-top: 10px;
+                .position {
+                    display: flex;
+                    align-items: center;
+                    border: 1px solid;
+                    font-size: 18px;
+                    border-radius: 5px;
+                    justify-content: space-around;
+                    background-color: $secondary;
+
+                    * {
+                        padding: 5px;
+                        background: rgba(255, 255, 255, 0);
+                        color: $white;
+                        border: none;
+                        border-right: 1px solid;
+                        outline: none;
+                    }
+                    .id {
+                    }
+                    .type {
+                       
+                    }
+                    .pips {
+                        width: 50px;
+                        
+                    }
+                    .condition {
+                        border: none;
                     }
                 }
             }
