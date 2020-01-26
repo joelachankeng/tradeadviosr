@@ -41,10 +41,16 @@
                 
             }
             &.open-positions {
-                display: none;
+                // display: none;
             }
-            &.negative-positons {
+            &.clear-positons {
                 display: none;
+                border: 2px solid $white;
+                border-radius: 5px;
+                cursor: pointer;
+                &:hover {
+                    border-color: $primary;
+                }
             }
         }
     }
@@ -128,7 +134,7 @@
         }
     }
     .stats {
-        display: flex;
+        display: none;
         width: 100%;
         justify-content: space-between;
         align-items: center;
@@ -174,7 +180,7 @@
         }
     }
     .logs {
-        display: flex;
+        display: none;
         flex-direction: column;
         width: 100%;
         margin: 20px 0px;

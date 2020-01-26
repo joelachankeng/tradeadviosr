@@ -16,9 +16,10 @@
 
 $(function() {
     
-    $currentTrend = 'uptrend';
+    
     $above50EMA = true;
     $above200EMA = true;
+    $trend = 'buy';
 
     positions= [];
 
@@ -76,10 +77,10 @@ $(function() {
 
     function watch()  {
         this.parent = $('.watchlist .warner'); 
-        this.type =  $above200EMA ? 'buy' : 'sell';
+        // this.type =  $above200EMA ? 'buy' : 'sell';
 
         this.getMACD = function() {
-           this.type == 'buy' ? $color = 'Red' : $color = 'Green';
+           $trend == 'buy' ? $color = 'Red' : $color = 'Green';
             return 'Waiting for Fade ' + $color + ' MACD';
         }
 
@@ -118,6 +119,29 @@ $(function() {
             return 'Be Careful of 50 EMA';
         }
 
+        this.get5Pips = function() {
+            return 'Close >= 5 Pips';
+        }
+
+        this.check1H = function() {
+            return 'Check 1H for big trend';
+        }
+
+        this.closeNegaHedge = function() {
+            return 'Lots of negative Hedge, No open, open close';
+        }
+
+        this.priceContuines = function() {
+            $trend == 'buy' ? $hedgeDir = 'above' : $hedgeDir = 'below';
+            return 'If Hedged & Price closed ' + $hedgeDir + ' , ' + $trend;
+        }
+
+        this.closeHedge = function() {
+            $trend == 'buy' ? $hedgeDir = 'lowest hedged sell' : $hedgeDir = 'highest hedged buy';
+            return 'close ' + $hedgeDir;
+        }
+
+
         this.clear = function() {
             this.parent.empty();
         }
@@ -133,36 +157,36 @@ $(function() {
 
     function action() {
         this.parent = $('.actions');
-        this.type =  $above200EMA ? 'buy' : 'sell';
-
+    
         this.getMACD = function() {
-           this.type == 'buy' ? $color = 'Red' : $color = 'Green';
-            return { id: 'getMACD', print: this.type + ' @ Fade ' + $color + ' MACD' };
+            
+           $trend == 'buy' ? $color = 'Red' : $color = 'Green';
+            return { id: 'getMACD', print: $trend + ' @ Fade ' + $color + ' MACD' };
         }
 
         this.getNegaMACD = function() {
             this.negaType =  $above200EMA ? 'sell' : 'buy';
-            this.type == 'buy' ? $negaColor = 'Green' : $negaColor = 'Red';
+            $trend == 'buy' ? $negaColor = 'Green' : $negaColor = 'Red';
             return { id: 'getNegaMACD', print: this.negaType + ' @ Fade ' + $negaColor + ' MACD' };
          }
 
         this.getEMA50 = function() {
-            return { id: 'getEMA50', print: this.type + ' @ 50 EMA' };
+            return { id: 'getEMA50', print: $trend + ' @ 50 EMA' };
         }
 
         this.getEMA200 = function() {
-            return { id: 'getEMA200', print: this.type + ' @ 200 EMA' };
+            return { id: 'getEMA200', print: $trend + ' @ 200 EMA' };
         }
 
         this.getHedge = function() {
-            this.type == 'buy' ? $hedgeType = 'buy' : $hedgeType = 'sell';
+            $trend == 'buy' ? $hedgeType = 'buy' : $hedgeType = 'sell';
             $hedgeType == 'buy' ? $hedgeDir = 'below' : $hedgeDir = 'above';
             return { id: 'getHedge', print:  'Hedge '+ $hedgeDir + ' ' + $hedgeType  };
         }
 
         this.getHedgeAction = function() {
-            this.type == 'buy' ? $hedgeType = 'sell' : $hedgeType = 'buy';
-            return { id: 'getHedgeAction', print:  $hedgeType + ' @ last Hedge '+ this.type  };
+            $trend == 'buy' ? $hedgeType = 'sell' : $hedgeType = 'buy';
+            return { id: 'getHedgeAction', print:  $hedgeType + ' @ last Hedge '+ $trend  };
         }
 
         this.clear = function() {
@@ -227,14 +251,22 @@ $(function() {
             }
         }
         else {
-            if($above200EMA) {
-                warnings.push(warnings.watchLastMax);
-                if($above50EMA) {
-
-                } else {
-                    warnings.push(warnings.watchEMA50);
+            warnings.push(warnings.getLastMax());
+            warnings.push(warnings.check1H());
+            if($above200EMA && !$above50EMA || !$above200EMA && $above50EMA ) {
+                warnings.push(warnings.getEMA50());
+            }
+            if(positions.filter(isOpen)) {
+                warnings.push(warnings.get5Pips());
+                $openSells = positions.filter(isOpen).filter(isSell);
+                $openBuys = positions.filter(isOpen).filter(isBuy);
+                if($openBuys.length != 0 && $openSells.length != 0) {
+                    warnings.push(warnings.priceContuines());
+                    warnings.push(warnings.closeHedge());
+                    warnings.push(warnings.closeNegaHedge());
                 }
             }
+
         }
     }
 
@@ -255,13 +287,10 @@ $(function() {
     function updateActions() {
         actions.clear();
         if (positions.length == 0 || positions.filter(isOpen).length == 0) {
-            if($above200EMA) {
-                actions.push(actions.MACD);
-                actions.push(actions.EMA200);
-                if($above50EMA) {
-                    actions.push(actions.EMA50);
-                   
-                }
+            actions.push(actions.getMACD());
+            actions.push(actions.getEMA200());
+            if($above200EMA && $above50EMA || !$above200EMA && !$above50EMA ) {
+                actions.push(actions.getEMA50());
             }
         } else {
             if($above200EMA) {
@@ -271,21 +300,46 @@ $(function() {
                     // console.log($openSells);
                     // console.log($openBuys);
                     if($openBuys.length > $openSells.length) {
-                        actions.push(actions.HedgeAction);
-                        actions.push(actions.negaMACD);
-                        actions.push(actions.Hedge);
+                        actions.push(actions.getHedgeAction());
+                        actions.push(actions.getNegaMACD());
+                        actions.push(actions.getHedge());
                     } else {
-                        actions.push(actions.MACD);
-                        actions.push(actions.EMA200);
+                        actions.push(actions.getMACD());
+                        actions.push(actions.getEMA200());
                         if($openBuys.length == $openSells.length) {
                             if($above50EMA) {
-                                actions.push(actions.EMA50);
+                                actions.push(actions.getEMA50());
                             }
                         }
                     }
                 } else {
-                    actions.push(actions.negaMACD);
-                    actions.push(actions.Hedge);
+                    actions.push(actions.getNegaMACD());
+                    actions.push(actions.getHedge());
+                }
+                
+            }
+            else {
+                if(positions.filter(isOpen).find(isBuy)) {
+                    $openSells = positions.filter(isOpen).filter(isSell);
+                    $openBuys = positions.filter(isOpen).filter(isBuy);
+                    // console.log($openSells);
+                    // console.log($openBuys);
+                    if($openBuys.length < $openSells.length) {
+                        actions.push(actions.getHedgeAction());
+                        actions.push(actions.getNegaMACD());
+                        actions.push(actions.getHedge());
+                    } else {
+                        actions.push(actions.getMACD());
+                        actions.push(actions.getEMA200());
+                        if($openBuys.length == $openSells.length) {
+                            if(!$above50EMA) {
+                                actions.push(actions.getEMA50());
+                            }
+                        }
+                    }
+                } else {
+                    actions.push(actions.getNegaMACD());
+                    actions.push(actions.getHedge());
                 }
                 
             }
@@ -295,12 +349,19 @@ $(function() {
     function updatePositions() {
         $('.positions').empty();
         if(positions.length != 0) {
+            $( ".clear-positons" ).show();
+            $totalPips = 0;
             $.each(positions, function(key, $position){
                 $element = "<div class='position' id="+ key +"><span class='id'>"+ key +"</span>"
                 + $position.getType() + $position.getPips() + $position.getOpen()
                 + "</div>";
                 $('.positions').append($element);
+                $totalPips += parseInt($position.pips);
             });
+            $('.open-positions').html($totalPips + ' Total Pips');
+        } else {
+            $( ".clear-positons" ).hide();
+            $('.open-positions').html('');
         }        
     }
 
@@ -340,20 +401,23 @@ $(function() {
                         } else {
                             this.addPosition(true);
                         } 
+                    } else {
+                        if($openBuys.length < $openSells.length) {
+                            $lastPos = this.getLastOpenPosition('sell');
+                            $lastPos.open = false;
+                        } else {
+                            this.addPosition(true);
+                        } 
                     }
                 }
                 if($actionID == 'getHedge') {
-                    if($above200EMA) {
-                        this.addPosition(true);
-                    }
+                    this.addPosition(true);
                 }
                 if($actionID == 'getMACD' || $actionID == 'getEMA200' || $actionID == 'getEMA50' ) {
                     this.addPosition();
                 }
                 if($actionID == 'getHedgeAction') {
-                    if($above200EMA) {
-                        this.addPosition(true);
-                    }
+                    this.addPosition(true);
                 }
             }
             update();
@@ -363,6 +427,7 @@ $(function() {
     }
 
     function update() {
+        $trend =  $above200EMA ? 'buy' : 'sell';
         updateProgressBar();
         updatePositions();
         updateTrend();
@@ -397,7 +462,7 @@ $(function() {
         var valueSelected = this.value.toLowerCase();
         valueSelected == "open" ? valueSelected = true : valueSelected = false;
         positions[$positionID].open = valueSelected;
-        updatePositions();
+        update();
     });
 
     $( ".50ema.switch" ).on( "click", function() {
@@ -417,6 +482,11 @@ $(function() {
         else{
             $above200EMA = true;
         }
+        update();
+    });
+
+    $( ".clear-positons" ).on( "click", function() {
+        positions = [];
         update();
     });
 
